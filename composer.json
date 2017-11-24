@@ -1,14 +1,16 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "mathieutu/secret-santa",
+    "description": "A secret santa for your company",
+    "keywords": [],
     "license": "MIT",
     "type": "project",
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "laravel/socialite":"3.*", 
+        "mathieutu/lvconnect-socialite": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -52,5 +54,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
