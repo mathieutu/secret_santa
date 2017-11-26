@@ -25,14 +25,16 @@ return [
         'region' => 'us-east-1',
     ],
 
-    'sparkpost' => [
-        'secret' => env('SPARKPOST_SECRET'),
+    'google' => [
+        'client_id' => env('GOOGLE_ID'),
+        'client_secret' => env('GOOGLE_SECRET'),
+        'redirect' => env('GOOGLE_CALLBACK'),
     ],
 
-    'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
+    'lvconnect' => [
+        'client_id' => env('LVCONNECT_ID'),
+        'client_secret' => env('LVCONNECT_SECRET'),
+        'redirect' => env('LVCONNECT_CALLBACK'),
     ],
 
 ];

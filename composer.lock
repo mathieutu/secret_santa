@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d42e5accad1fa6c940f87b12887a99d9",
+    "content-hash": "743d882856e7cb4d7d09ec419e8944bb",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -722,23 +722,23 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.21",
+            "version": "v3.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "c4e4337e5b70149fdbefbb95b2c9e93d0749c413"
+                "reference": "fc1c8d415699e502f3e61cbc61e3250d5bd942eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/c4e4337e5b70149fdbefbb95b2c9e93d0749c413",
-                "reference": "c4e4337e5b70149fdbefbb95b2c9e93d0749c413",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/fc1c8d415699e502f3e61cbc61e3250d5bd942eb",
+                "reference": "fc1c8d415699e502f3e61cbc61e3250d5bd942eb",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "~5.0|~6.0",
-                "illuminate/contracts": "~5.0",
-                "illuminate/http": "~5.0",
-                "illuminate/support": "~5.0",
+                "guzzlehttp/guzzle": "~6.0",
+                "illuminate/contracts": "~5.4",
+                "illuminate/http": "~5.4",
+                "illuminate/support": "~5.4",
                 "league/oauth1-client": "~1.0",
                 "php": ">=5.4.0"
             },
@@ -750,6 +750,14 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Socialite\\SocialiteServiceProvider"
+                    ],
+                    "aliases": {
+                        "Socialite": "Laravel\\Socialite\\Facades\\Socialite"
+                    }
                 }
             },
             "autoload": {
@@ -764,7 +772,7 @@
             "authors": [
                 {
                     "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
+                    "email": "taylor@laravel.com"
                 }
             ],
             "description": "Laravel wrapper around OAuth 1 & OAuth 2 libraries.",
@@ -772,7 +780,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2017-03-27T21:32:28+00:00"
+            "time": "2017-11-06T16:02:48+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -989,17 +997,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mathieutu/lvconnect-socialite.git",
-                "reference": "8c36767d3c0d88b083305610b9213c4cf0704c0a"
+                "reference": "daf2da243c02aa839f061a59a2600407d1b26205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mathieutu/lvconnect-socialite/zipball/8c36767d3c0d88b083305610b9213c4cf0704c0a",
-                "reference": "8c36767d3c0d88b083305610b9213c4cf0704c0a",
+                "url": "https://api.github.com/repos/mathieutu/lvconnect-socialite/zipball/daf2da243c02aa839f061a59a2600407d1b26205",
+                "reference": "daf2da243c02aa839f061a59a2600407d1b26205",
                 "shasum": ""
             },
             "require": {
-                "php": ">= 7",
-                "socialiteproviders/manager": "^2.0"
+                "php": ">= 7.0",
+                "socialiteproviders/manager": "^3.3"
             },
             "type": "library",
             "extra": {
@@ -1025,7 +1033,7 @@
                 }
             ],
             "description": "LVConnect OAuth2 Provider for Laravel Socialite",
-            "time": "2017-11-24T17:20:57+00:00"
+            "time": "2017-11-24T18:02:43+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1652,20 +1660,20 @@
         },
         {
             "name": "socialiteproviders/manager",
-            "version": "v2.2.1",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Manager.git",
-                "reference": "775bd7f25c71ed88e9ae73ed52ba129fecc7abd0"
+                "reference": "ac108bce073135a55dfebf28ceaf1459669348e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/775bd7f25c71ed88e9ae73ed52ba129fecc7abd0",
-                "reference": "775bd7f25c71ed88e9ae73ed52ba129fecc7abd0",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/ac108bce073135a55dfebf28ceaf1459669348e8",
+                "reference": "ac108bce073135a55dfebf28ceaf1459669348e8",
                 "shasum": ""
             },
             "require": {
-                "laravel/socialite": "~2.0",
+                "laravel/socialite": "~3.0",
                 "php": "^5.6 || ^7.0"
             },
             "require-dev": {
@@ -1673,6 +1681,13 @@
                 "phpunit/phpunit": "^5.0"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SocialiteProviders\\Manager\\ServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "SocialiteProviders\\Manager\\": "src/",
@@ -1690,7 +1705,7 @@
                 }
             ],
             "description": "Easily add new or override built-in providers in Laravel Socialite.",
-            "time": "2016-12-04T07:11:20+00:00"
+            "time": "2017-09-21T07:21:55+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3290,16 +3305,16 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "3cc8f69b3028d0f96a9078e6295d86e9bf019be5"
+                "reference": "8ebba84e5bd74fc5fdeb916b38749016c7232f93"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/3cc8f69b3028d0f96a9078e6295d86e9bf019be5",
-                "reference": "3cc8f69b3028d0f96a9078e6295d86e9bf019be5",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/8ebba84e5bd74fc5fdeb916b38749016c7232f93",
+                "reference": "8ebba84e5bd74fc5fdeb916b38749016c7232f93",
                 "shasum": ""
             },
             "require": {
@@ -3333,7 +3348,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2016-10-03T07:40:28+00:00"
+            "time": "2017-11-24T15:00:59+00:00"
         },
         {
             "name": "phpunit/php-text-template",

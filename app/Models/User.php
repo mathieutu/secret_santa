@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -12,4 +12,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email',
     ];
+
+    protected static function boot()
+    {
+        static::created(function (self $user) {
+            $user->notify(new \App\Notifications\AccountRegistered);
+        });
+    }
 }
