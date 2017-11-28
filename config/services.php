@@ -20,21 +20,21 @@ return [
     ],
 
     'ses' => [
-        'key' => env('SES_KEY'),
+        'key'    => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
     ],
 
     'google' => [
-        'client_id' => env('GOOGLE_ID'),
+        'client_id'     => env('GOOGLE_ID'),
         'client_secret' => env('GOOGLE_SECRET'),
-        'redirect' => env('GOOGLE_CALLBACK'),
+        'redirect'      => env('GOOGLE_CALLBACK'),
     ],
 
     'lvconnect' => [
-        'client_id' => env('LVCONNECT_ID'),
+        'client_id'     => env('LVCONNECT_ID'),
         'client_secret' => env('LVCONNECT_SECRET'),
-        'redirect' => env('LVCONNECT_CALLBACK'),
+        'redirect'      => env('LVCONNECT_CALLBACK'),
     ],
 
 ];

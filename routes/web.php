@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController');
+Route::get('register', 'RegistrationController@redirectToProvider')->name('register');
+Route::get('confirmation', 'RegistrationController@handleProviderCallback');

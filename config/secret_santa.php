@@ -7,4 +7,5 @@ return [
         'user_name_key' => 'firstName', // Key for the name of the User. ex for a first name in google: givenName
         'closing_date'  => env('CLOSING_DATE'),
     ],
+    'company_name' => env('COMPANY_NAME'),
 ];
