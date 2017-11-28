@@ -17,11 +17,11 @@ class HomeController extends BaseController
     {
         if ($session->has('error')) {
             return view(self::ERRORS_VIEWS[$session->get('error')])
-                ->withUser($session->get('user'));
+                ->with(['user' => $session->get('user')]);
         }
 
         if ($session->has('user')) {
-            return view('confirmation')->withUser($session->get('user'));
+            return view('confirmation')->with(['user' => $session->get('user')]);
         }
 
         return view('welcome');

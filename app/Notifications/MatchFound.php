@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class AccountRegistered extends Notification
+class MatchFound extends Notification
 {
     use Queueable;
 
@@ -40,14 +40,18 @@ class AccountRegistered extends Notification
      */
     public function toMail(User $user)
     {
+        $receiver = $user->receiver;
+
         return (new MailMessage)
-            ->subject('Te voilà dans la liste Secret Santa ! 🎅')
+            ->subject('Ton secret santa ! 🎅')
             ->greeting('Ho ! Ho ! Ho !')
             ->line('Bonjour ' . $user->name . ',')
-            ->line("J'ai bien reçu ton courrier, et c'est très gentil de ta part de bien vouloir m'aider à organiser le Noël de " . config('secret_santa.company_name') . ' !')
-            ->line('Tu recevras très bientôt une missive avec le nom du collègue à qui tu devras faire un cadeau.')
-            ->salutation('Merci et à très vite, <br> Le Père Noël.')
-        ;
+            ->line('Ça y est, plus Noël approche, et plus mes petits lutins sont débordés.')
+            ->line('J\'ai reçu beaucoup d\'inscriptions de la part de tes collègues, et je ne vais pas pouvoir m\'occuper de tout. J\'ai besoin de toi !')
+            ->line("Tu vas devoir offrir un cadeau à $receiver->name ($receiver->email)")
+            ->line('Garde ça bien secret, je compte sur toi ! Et n\'oublie pas, les cadeaux ne doivent pas dépasser 15€ !')
+            ->line('Sur ce, je repars manager mes petits lutins.')
+            ->salutation('À très bientôt ! <br> Le Père Noël.');
     }
 
     /**

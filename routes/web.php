@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController');
-Route::get('register', 'RegistrationController@redirectToProvider')->name('register');
-Route::get('confirmation', 'RegistrationController@handleProviderCallback');
+/** @var \Illuminate\Routing\Router $router */
+$router->get('/', 'HomeController');
+$router->get('register', 'RegistrationController@redirectToProvider')->name('register');
+$router->get('confirmation', 'RegistrationController@handleProviderCallback');
+$router->redirect('continue', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');

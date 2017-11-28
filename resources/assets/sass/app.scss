@@ -45,7 +45,14 @@
  */
 
 @import "fonts";
-
+@screen sm {
+    html {
+        font-size: 200%;
+    }
+}
+html {
+    font-size: 150%;
+}
 body {
     background-repeat: no-repeat;
     background-position: center;
@@ -57,14 +64,12 @@ body {
 h1 {
     font-family: 'Dancing', 'serif';
     align-self: flex-start;
-    font-size: 6rem;
     font-weight: normal;
     line-height: 1.2em;
     margin: 1rem 0;
     span {
         display: block;
         font-size: 1.5em;
-        margin-left: 1em;
     }
 }
 

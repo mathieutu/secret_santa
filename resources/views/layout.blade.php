@@ -10,16 +10,16 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- Styles -->
 </head>
-<body class="container mx-auto px-4 bg-grey h-full">
-<div class="mx-auto bg-white flex flex-wrap md:my-9 my-4" style="max-height: 70%">
-    <div class="md:w-1/2 flex flex-wrap content-center">
-        <img src="{{ asset('img/img-santa.png') }}" class="mx-auto my-4 max-w-full" style="max-height: 70%" alt="santa">
+<body class="container mx-auto px-2 bg-grey h-full">
+<div class="mx-auto bg-white flex flex-wrap items-center justify-center md:my-6 my-2 p-4" style="max-height: 70%">
+    <div class="md:w-1/2 text-center">
+        <img src="{{ asset('img/img-santa.png') }}" class="mx-auto my-2 max-w-full" style="max-height: 400px" alt="santa">
     </div>
-    <div class="md:w-1/2 px-8">
-        <h1 class="text-red-dark">
-            Secret <span>Santa</span>
+    <div class="md:w-1/2 px-4">
+        <h1 class="text-red-dark text-5xl xl:text-6xl sm:ml-9 md:ml-4">
+            Secret <span class="ml-9">Santa</span>
         </h1>
-        <div class="font-sans text-2xl mt-9">
+        <div class="font-sans mt-4 text-xs">
             @yield('content')
         </div>
     </div>

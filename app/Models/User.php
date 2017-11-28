@@ -10,7 +10,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email',
+        'name', 'email', 'receiver_id'
     ];
 
     protected static function boot()
@@ -18,5 +18,10 @@ class User extends Authenticatable
         static::created(function (self $user) {
             $user->notify(new \App\Notifications\AccountRegistered);
         });
+    }
+
+    public function receiver()
+    {
+        return $this->belongsTo(User::class, 'receiver_id');
     }
 }
