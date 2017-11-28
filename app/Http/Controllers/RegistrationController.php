@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Config\Repository as Config;
-use Illuminate\Support\Carbon;
+use Illuminate\Routing\Controller as BaseController;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
 
-class RegistrationController extends Controller
+class RegistrationController extends BaseController
 {
     private $socialite;
     private $config;
 
     public function __construct(Socialite $socialite, Config $config)
     {
-        $this->config = $config->get('secret_santa.authentication');
+        $this->config = $config->get('secret_santa.registration');
         $this->socialite = $socialite->driver($this->config['provider']);
     }
 
@@ -41,21 +41,14 @@ class RegistrationController extends Controller
             $socialiteUser = $this->socialite->user();
         } catch (RequestException $e) {
             return redirect('/')->with([
-                'error' => new \App\Exceptions\SocialiteError,
-                'user'  => null,
-            ]);
-        }
-
-        if (Carbon::now()->gte(Carbon::parse($this->config['closing_date']))) {
-            return redirect('/')->with([
-                'error' => new \App\Exceptions\RegistrationClosedError,
+                'error' => \App\Exceptions\SocialiteError::class,
                 'user'  => null,
             ]);
         }
 
         if (!$this->emailAllowed($socialiteUser)) {
             return redirect('/')->with([
-                'error' => new \App\Exceptions\EmailNotAllowedError,
+                'error' => \App\Exceptions\EmailNotAllowedError::class,
                 'user'  => new User([
                     'name'  => $socialiteUser[$this->config['user_name_key']],
                     'email' => $socialiteUser->getEmail(),
