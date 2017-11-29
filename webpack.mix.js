@@ -20,6 +20,8 @@ mix.sass('resources/assets/sass/app.scss', 'public/css').options({
 mix.copyDirectory('resources/assets/img', 'public/img');
 mix.copyDirectory('resources/assets/fonts', 'public/fonts');
 
-mix.browserSync({
-    proxy: '127.0.0.1:8000'
-});
+if (mix.inProduction()) {
+    mix.browserSync({
+        proxy: '127.0.0.1:8000'
+    });
+}

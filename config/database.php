@@ -1,5 +1,9 @@
 <?php
 
+$getHerokuConfig = function ($config) {
+    return data_get(parse_url(env("DATABASE_URL")), $config);
+};
+
 return [
 
     /*
@@ -77,6 +81,19 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
         ],
+
+        'heroku' => [
+            'driver'   => 'pgsql',
+            'host'     => $getHerokuConfig('host'),
+            'database' => substr($getHerokuConfig('path'), 1),
+            'username' => $getHerokuConfig('user'),
+            'password' => $getHerokuConfig('pass'),
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+            'sslmode'  => 'prefer',
+        ],
+
 
     ],
 
