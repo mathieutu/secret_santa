@@ -3,8 +3,8 @@
     <div class="message">
         <p>
             Salut à toi, mon jeune ami ! <br>
-            Pour ce Noël {{ now()->year }}, ta toute dévouée team Web t'a fait un petit cadeau bien spécial... <br>
-            Te donner la possibilité d'en recevoir !
+            Pour ce Noël {{ now()->year }}, tes dévoués collègues ont décidé de te faire un petit cadeau bien spécial... <br>
+            Te donner la possibilité d'en offrir !
         </p>
         <p class="mt-4">As tu été sage ?</p>
     </div>

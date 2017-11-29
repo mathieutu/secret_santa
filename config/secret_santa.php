@@ -8,4 +8,5 @@ return [
         'closing_date'  => env('CLOSING_DATE'),
     ],
     'company_name' => env('COMPANY_NAME'),
+    'company_url' => env('COMPANY_URL'),
 ];

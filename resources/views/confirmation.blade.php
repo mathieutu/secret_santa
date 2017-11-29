@@ -5,7 +5,7 @@
         <p class="mt-4">Merci de ton inscription jeune {{ $user->name }} ! <br>
         Tu recevras très prochainement un mail t'indiquant les prochaines étapes du jeu ! <br>
         </p>
-        <p class="mt-4">A bientôt </p>
+        <p class="mt-4">A bientôt !</p>
     </div>
     <div class="text-center mt-8">
         <a href="/continue" class="btn">

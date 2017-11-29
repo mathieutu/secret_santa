@@ -6,6 +6,7 @@ use App\Models\User;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
 
@@ -50,15 +51,15 @@ class RegistrationController extends BaseController
             return redirect('/')->with([
                 'error' => \App\Exceptions\EmailNotAllowedError::class,
                 'user'  => new User([
-                    'name'  => $socialiteUser[$this->config['user_name_key']],
                     'email' => $socialiteUser->getEmail(),
+                    'name'  => Str::title($socialiteUser[$this->config['user_name_key']]),
                 ]),
             ]);
         }
 
         return redirect('/')->withUser(User::firstOrCreate(
             ['email' => $socialiteUser->getEmail()],
-            ['name' => $socialiteUser[$this->config['user_name_key']]]
+            ['name' => Str::title($socialiteUser[$this->config['user_name_key']])]
         ));
     }
 
