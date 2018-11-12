@@ -11,16 +11,16 @@
         "heroku-postbuild": "npm run production"
     },
     "dependencies": {
-        "cross-env": "^5.0.1",
-        "laravel-mix": "^1.0",
-        "tailwindcss": "^0.2.2"
+        "cross-env": "^5.2.0",
+        "laravel-mix": "^2.1.14",
+        "tailwindcss": "^0.7.2"
     },
     "devDependencies": {
-        "browser-sync": "^2.18.13",
-        "browser-sync-webpack-plugin": "^1.2.0"
+        "browser-sync": "^2.26.3",
+        "browser-sync-webpack-plugin": "^2.2.2"
     },
     "engines": {
-        "node": "8.*",
+        "node": "10.*",
         "yarn": "1.*"
     }
 }
