@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -17,11 +18,18 @@ class HomeController extends BaseController
     {
         if ($session->has('error')) {
             return view(self::ERRORS_VIEWS[$session->get('error')])
-                ->with(['user' => $session->get('user')]);
+                ->with([
+                    'user' => $session->get('user'),
+                ]);
         }
 
-        if ($session->has('user')) {
-            return view('confirmation')->with(['user' => $session->get('user')]);
+        if ($user = $session->get('user')) {
+            /** @var User $user */
+            return view('confirmation')->with([
+                'user' => $user,
+                'img' => snake_case($user->city) . '.gif',
+                'alreadyKnown' => !$user->wasRecentlyCreated
+            ]);
         }
 
         return view('welcome');

@@ -43,24 +43,31 @@ class RegistrationController extends BaseController
         } catch (RequestException $e) {
             return redirect('/')->with([
                 'error' => \App\Exceptions\SocialiteError::class,
-                'user'  => null,
+                'user' => null,
             ]);
         }
+
+        $email = $socialiteUser->getEmail();
+        $firstName = Str::title($socialiteUser['firstName']);
 
         if (!$this->emailAllowed($socialiteUser)) {
             return redirect('/')->with([
                 'error' => \App\Exceptions\EmailNotAllowedError::class,
-                'user'  => new User([
-                    'email' => $socialiteUser->getEmail(),
-                    'name'  => Str::title($socialiteUser[$this->config['user_name_key']]),
+                'user' => new User([
+                    'email' => $email,
+                    'name' => $firstName,
                 ]),
             ]);
         }
 
-        return redirect('/')->withUser(User::firstOrCreate(
-            ['email' => $socialiteUser->getEmail()],
-            ['name' => Str::title($socialiteUser[$this->config['user_name_key']])]
-        ));
+        $user = User::firstOrCreate([
+            'email' => $email,
+        ], [
+            'name' => $firstName,
+            'city' => $socialiteUser['city'],
+        ]);
+
+        return redirect()->route('home')->with(compact('user'));
     }
 
     protected function emailAllowed(SocialiteUser $user): bool

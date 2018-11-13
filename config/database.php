@@ -1,7 +1,7 @@
 <?php
 
-$getHerokuConfig = function ($config) {
-    return data_get(parse_url(env("DATABASE_URL")), $config);
+$parseUrl = function ($config, $default = null) {
+    return data_get(parse_url(env("DB_URL", env("DATABASE_URL"))), $config) ?: $default;
 };
 
 return [
@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsqlurl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'database' => database_path('database.sqlite'),
             'prefix' => '',
         ],
 
@@ -56,6 +56,19 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+        ],
+
+        'pgsqlurl' => [
+            'driver' => 'pgsql',
+            'host' => $parseUrl('host', 'db'),
+            'database' => substr($parseUrl('path', '/secret'), 1),
+            'username' => $parseUrl('user', 'secret'),
+            'password' => $parseUrl('pass', ''),
+            'port' => $parseUrl('port', '5432'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
         ],
 
         'pgsql' => [
@@ -82,18 +95,19 @@ return [
             'prefix' => '',
         ],
 
-        'heroku' => [
-            'driver'   => 'pgsql',
-            'host'     => $getHerokuConfig('host'),
-            'database' => substr($getHerokuConfig('path'), 1),
-            'username' => $getHerokuConfig('user'),
-            'password' => $getHerokuConfig('pass'),
-            'charset'  => 'utf8',
-            'prefix'   => '',
-            'schema'   => 'public',
-            'sslmode'  => 'prefer',
+        'testing' => [
+            'driver' => env('TESTING_DB_DRIVER', 'sqlite'),
+            'database' => env('TESTING_DB_DATABASE', ':memory:'),
+            'host' => env('TESTING_DB_HOST', 'localhost'),
+            'port' => env('TESTING_DB_PORT'),
+            'username' => env('TESTING_DB_USERNAME'),
+            'password' => env('TESTING_DB_PASSWORD'),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
         ],
-
 
     ],
 

@@ -40,11 +40,13 @@ class AccountRegistered extends Notification
      */
     public function toMail(User $user)
     {
+        $company = config('secret_santa.company_name');
+
         return (new MailMessage)
-            ->subject('Te voilà dans la liste Secret Santa ! 🎅')
+            ->subject("Te voilà Secret Santa $company ! 🎅")
             ->greeting('Ho ! Ho ! Ho !')
-            ->line('Bonjour ' . $user->name . ',')
-            ->line("J'ai bien reçu ton courrier, et c'est très gentil de ta part de bien vouloir m'aider à organiser le Noël de " . config('secret_santa.company_name') . ' !')
+            ->line("Bonjour $user->name ,")
+            ->line("J'ai bien reçu ton courrier, et c'est très gentil de ta part de bien vouloir m'aider à organiser le Noël de $company $user->city !")
             ->line('Tu recevras très bientôt une missive avec le nom du collègue à qui tu devras faire un cadeau.')
             ->salutation('Merci et à très vite, <br> Le Père Noël.')
         ;
