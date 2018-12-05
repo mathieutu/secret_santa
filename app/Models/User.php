@@ -40,9 +40,9 @@ class User extends Model implements Authenticatable
         'name', 'email', 'city', 'receiver_id'
     ];
 
-    private const CITIES = [
-        'paris' => 0,
-        'lyon' => 1,
+    public const CITIES = [
+        'Paris' => 0,
+        'Lyon' => 1,
     ];
 
     protected static function boot(): void
@@ -56,12 +56,12 @@ class User extends Model implements Authenticatable
 
     public function setCityAttribute(string $cityName): void
     {
-        $this->attributes['city'] = self::CITIES[snake_case($cityName)] ?? self::CITIES['paris'];
+        $this->attributes['city'] = self::CITIES[$cityName] ?? self::CITIES['Paris'];
     }
 
-    public function getCityAttribute(int $cityCode): string
+    public function getCityAttribute(?int $cityCode): ?string
     {
-        return Str::title(array_flip(self::CITIES)[$cityCode]);
+        return array_search($cityCode, self::CITIES) ?: null;
     }
 
     public function receiver(): BelongsTo

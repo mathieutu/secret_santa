@@ -34,22 +34,22 @@ class MatchFound extends Notification
     /**
      * Get the mail representation of the notification.
      *
-     * @param \App\Models\User $user
+     * @param \App\Models\User $giver
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail(User $user)
+    public function toMail(User $giver)
     {
-        $receiver = $user->receiver;
+        $receiver = $giver->receiver;
 
         return (new MailMessage)
             ->subject('Ton secret santa ! 🎅')
             ->greeting('Ho ! Ho ! Ho !')
-            ->line('Bonjour ' . $user->name . ',')
+            ->line('Bonjour ' . $giver->name . ',')
             ->line('Ça y est, plus Noël approche, et plus mes petits lutins sont débordés.')
             ->line('J\'ai reçu beaucoup d\'inscriptions de la part de tes collègues, et je ne vais pas pouvoir m\'occuper de tout. J\'ai besoin de toi !')
             ->line("Tu vas devoir offrir un cadeau à $receiver->name ($receiver->email)")
-            ->line('Garde ça bien secret, je compte sur toi ! Et n\'oublie pas, les cadeaux ne doivent pas dépasser 15€ !')
+            ->line('Garde ça bien secret, je compte sur toi ! Et n\'oublie pas, les cadeaux ne doivent pas dépasser une dizaine d\'€uros !')
             ->line('Sur ce, je repars manager mes petits lutins.')
             ->salutation('À très bientôt ! <br> Le Père Noël.');
     }

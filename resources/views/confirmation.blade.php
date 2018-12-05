@@ -16,7 +16,7 @@
         </p>
         <p class="mt-4">A très vite&nbsp;!</p>
     </div>
-    @component('components.button', ['route' => 'continue'])
+    @component('components.button', ['route' => 'logout'])
         Continuer&nbsp;!
     @endcomponent
 @endsection

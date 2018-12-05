@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3f883fcc72406943df87720c16681c0",
+    "content-hash": "b7630d677294f1008144a8a0446af68f",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -1263,6 +1263,39 @@
             "time": "2017-11-24T18:02:43+00:00"
         },
         {
+            "name": "mathieutu/php-project-launcher",
+            "version": "v0.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mathieutu/php-project-launcher.git",
+                "reference": "c18eed8698183d02a1df593de99b7a0a938804bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mathieutu/php-project-launcher/zipball/c18eed8698183d02a1df593de99b7a0a938804bc",
+                "reference": "c18eed8698183d02a1df593de99b7a0a938804bc",
+                "shasum": ""
+            },
+            "bin": [
+                "./bin/ppl",
+                "./bin/ppla",
+                "./bin/pplsf"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathieu TUDISCO",
+                    "email": "dev@mathieutu.ovh"
+                }
+            ],
+            "description": "A php project launcher with Docker.",
+            "time": "2018-12-03T14:46:13+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.24.0",
             "source": {
@@ -1953,6 +1986,40 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "secret-santa/find-matches",
+            "version": "dev-nova",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/FindMatches",
+                "reference": "eaace6ab6a320a2e7d0da8b9e3a8fe1d04115990",
+                "shasum": null
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SecretSanta\\FindMatches\\CardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SecretSanta\\FindMatches\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova card.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ]
         },
         {
             "name": "socialiteproviders/manager",

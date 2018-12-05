@@ -8,6 +8,10 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/FindMatches"
         }
     ],
     "require": {
@@ -20,6 +24,7 @@
         "laravel/tinker": "~1.0.8",
         "mathieutu/lvconnect-socialite": "dev-master",
         "mathieutu/php-project-launcher": "^0.0.4",
+        "secret-santa/find-matches": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.5",
@@ -46,8 +51,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-            ]
+            "dont-discover": []
         }
     },
     "scripts": {

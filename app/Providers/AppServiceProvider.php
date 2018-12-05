@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,9 +15,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(UrlGenerator $url)
     {
-        if ($this->app->environment('production')) {
-            $url->forceScheme('https');
-            $this->app['request']->server->set('HTTPS', true);
+        if (!$this->app->runningInConsole()) {
+            if ($this->app->environment('local') && auth()->guest()) {
+                auth()->login(User::whereEmail('mathieu.tudisco@link-value.fr')->first());
+            }
+
+            if ($this->app->environment('production')) {
+                $url->forceScheme('https');
+                $this->app['request']->server->set('HTTPS', true);
+            }
         }
     }
 

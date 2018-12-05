@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use Laravel\Nova\Nova;
-use Laravel\Nova\Cards\Help;
+use App\Nova\Metrics\UsersPerCity;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -26,10 +26,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function routes()
     {
-        Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+        Nova::routes()->register();
     }
 
     /**
@@ -42,8 +39,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewNova', function ($user) {
-            return in_array($user->email, [
-                //
+            return \in_array($user->email, [
+                'mathieu.tudisco@link-value.fr',
+                'joy.schlienger@link-value.fr',
             ]);
         });
     }
@@ -56,11 +54,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
         ];
     }
 
-    /**
+    /**w
      * Get the tools that should be listed in the Nova sidebar.
      *
      * @return array
