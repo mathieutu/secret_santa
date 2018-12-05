@@ -61,8 +61,8 @@ return [
         'pgsqlurl' => [
             'driver' => 'pgsql',
             'host' => $parseUrl('host', 'db'),
-            'database' => substr($parseUrl('path', '/secret'), 1),
-            'username' => $parseUrl('user', 'secret'),
+            'database' => substr($parseUrl('path', '/local'), 1),
+            'username' => $parseUrl('user', 'root'),
             'password' => $parseUrl('pass', ''),
             'port' => $parseUrl('port', '5432'),
             'charset' => 'utf8',

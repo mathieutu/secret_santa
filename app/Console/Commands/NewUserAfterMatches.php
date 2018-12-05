@@ -14,7 +14,7 @@ class NewUserAfterMatches extends Command
      *
      * @var string
      */
-    protected $signature = 'secret-santa:new-user 
+    protected $signature = 'secret:new-user 
                 {--email= : The new user\'s email connection to use.}
                 {--name= : The new user\'s name connection to use.}';
 

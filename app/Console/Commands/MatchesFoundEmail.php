@@ -8,30 +8,32 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use App\Services\FindMatches as FindMatchesService;
 
-class FindMatches extends Command
+class MatchesFoundEmail extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'secret:find';
+    protected $signature = 'secret:email';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Roll the users and find the secret santa matches';
+    protected $description = 'Send "Matches found" Email to everybody';
 
     /**
      * Execute the console command.
      *
      * @return mixed
      */
-    public function handle(FindMatchesService $findMatches)
+    public function handle()
     {
-        $findMatches();
+        User::all()->each(function (User $giver) {
+            $giver->notify(new MatchFound());
+        });
 
         return 0;
     }
