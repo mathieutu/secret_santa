@@ -11,7 +11,12 @@ class LogOut
 {
     public function __invoke(Request $request, Session $session)
     {
-       auth()->logout();
+        try {
+            auth()->logout();
+        } catch (\Exception $e) {
+            // Exception is sent because there is no remember_token column.
+            // At the state of this app, we really don't care.
+        }
 
        return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
     }
