@@ -47,7 +47,7 @@ class AccountRegistered extends Notification
             ->greeting('Ho ! Ho ! Ho !')
             ->line("Bonjour $user->name ,")
             ->line("J'ai bien reçu ton courrier, et c'est très gentil de ta part de bien vouloir m'aider à organiser le Noël de $company $user->city !")
-            ->line('Tu recevras très bientôt une missive avec le nom du collègue à qui tu devras faire un cadeau.')
+            ->line('Tu recevras très bientôt une missive avec le nom du ou de la collègue à qui tu devras faire un cadeau.')
             ->salutation('Merci et à très vite, <br> Le Père Noël.')
         ;
     }

@@ -43,6 +43,7 @@ class User extends Model implements Authenticatable
     public const CITIES = [
         'Paris' => 0,
         'Lyon' => 1,
+        'Lille' => 2,
     ];
 
     protected static function boot(): void
@@ -61,7 +62,7 @@ class User extends Model implements Authenticatable
 
     public function getCityAttribute(?int $cityCode): ?string
     {
-        return array_search($cityCode, self::CITIES) ?: null;
+        return array_search($cityCode, self::CITIES, true) ?: null;
     }
 
     public function receiver(): BelongsTo
