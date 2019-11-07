@@ -24,7 +24,7 @@ class ShowHome
             return view('confirmation')->with([
                 'user' => $user,
                 'img' => snake_case($user->city) . '.gif',
-                'alreadyKnown' => !$user->wasRecentlyCreated,
+                'alreadyKnown' => $session->get('alreadyKnown', false),
             ]);
         }
 
